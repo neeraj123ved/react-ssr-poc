@@ -108,8 +108,8 @@ function mapStateToProps(state){
   return {news: state.news};
 }
 
-function loadData(store) {
-  return store.dispatch(fetchNews(1))
+function loadData(store, pageId) {
+  return store.dispatch(fetchNews(pageId))
 }
 
 

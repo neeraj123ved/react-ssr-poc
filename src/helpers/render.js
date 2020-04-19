@@ -14,6 +14,7 @@ export default (req, store) => {
 
   return `<html>
       <head>
+      <link href='https://d3nb9u6x572n0.cloudfront.net/assets/favicon-f54903568e0e9777f2e4db164b19e76ac961d1c283d9dbbff6cc8276188e5179.ico' rel='shortcut icon'>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>News</title>

@@ -12,15 +12,16 @@ app.use(express.static('public'));
 app.get('*', (req, res) => {
 
   const store = createStore();
-  console.log("req", req.query);
+  const pageId = req.url.match('/news') ? parseInt(req.url.split("/")[2]): 1;
   const promises = matchRoutes(Routes, req.path).map(({route}) => {
-    console.log("req", route);
-    return route.loadData? route.loadData(store): null;
+    return route.loadData? route.loadData(store, pageId): null;
   });
 
   Promise.all(promises).then(() => {
     res.send(render(req, store));
-  });
+  }).catch((err) => {
+    console.log(err);
+  })
 });
 
 app.listen(3000, () => {
