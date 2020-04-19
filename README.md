@@ -5,7 +5,7 @@ Server side rendering
 3. React-redux
 
 
-# Plese run the following command
+# Plese run the following commands
 npm install
 
 npm run dev
