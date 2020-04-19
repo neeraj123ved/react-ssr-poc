@@ -1,4 +1,10 @@
 # react-ssr-poc
-Server side rendering with express js
+Server side rendering
+1. Express Js
+2. React js
+
+
+# Plese run the following command
 npm install
+
 npm run dev
