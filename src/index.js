@@ -8,6 +8,9 @@ import createStore from './helpers/createStore';
 const app = express();
 
 app.use(express.static('public'));
+app.set('port', process.env.PORT || 3000);
+
+const port = app.get('port');
 
 app.get('*', (req, res) => {
 
@@ -24,6 +27,6 @@ app.get('*', (req, res) => {
   })
 });
 
-app.listen(3000, () => {
- console.log('listening on port 3000');
+app.listen(port, () => {
+ console.log('listening on port', port);
 });
