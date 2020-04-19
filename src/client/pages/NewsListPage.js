@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {fetchNews} from '../actions';
-import axios from 'axios';
 import timeAgo from "node-time-ago";
 import { withRouter } from 'react-router-dom';
 import localStorage from 'localStorage';
@@ -18,18 +17,20 @@ const styles = {
       padding: '5px'
     },
     newsItemEven: {
-      padding: '10px 30px',
+      padding: '5px 30px',
       backgroundColor:'#f6f6ef'
     },
     newsItemOdd: {
-      padding: '10px 30px',
-      backgroundColor:'#f6f6ef'
+      padding: '5px 30px',
     },
     newsPosition: {
       color: '#828282'
     },
     newsListSmall: {
       color: '#828282'
+    },
+    clickEvent: {
+      cursor: "pointer"
     },
     moreButton: {
       color: '#FF6600',
@@ -76,9 +77,10 @@ class NewsList extends Component {
         <div key={index} style={parseInt(index) % 2 === 0 ? styles.newsItemEven : styles.newsItemOdd}>
           <span>{obj.num_comments ? obj.num_comments : 0}.</span>
           {localStorage.getItem(`Upvotes-${obj.objectID}`) ? <span style={styles.newsPosition}> ▲</span>: null} {obj.title ? obj.title : "No Available"}
-          <small>(by {obj.author})</small>
+          {obj.url ? <small><a href={obj.url} style={styles.newsListSmall}> ({obj.url}) </a></small> : null}
+          <small>  by {obj.author}  {timeAgo(obj.created_at)} | </small>
           <small style={styles.newsListSmall}>
-             {!localStorage.getItem(`Upvotes-${obj.objectID}`) ? <span onClick={() => this.handleUpvotes(obj.objectID)}>upvotes  |</span>: null}  <span onClick={() => this.handleHide(obj.objectID)}>hide</span> | {timeAgo(obj.created_at)}
+             {!localStorage.getItem(`Upvotes-${obj.objectID}`) ? <span style={styles.clickEvent} onClick={() => this.handleUpvotes(obj.objectID)}>   upvotes  |</span>: null}  <span style={styles.clickEvent} onClick={() => this.handleHide(obj.objectID)}> [ hide ] </span>
           </small>
         </div>: null)
     })
