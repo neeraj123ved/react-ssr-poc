@@ -8,4 +8,4 @@ Server side rendering
 # Plese run the following commands
 npm install
 
-npm run dev
+npm start
